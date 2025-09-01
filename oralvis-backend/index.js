@@ -1,23 +1,39 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const dbPromise = require('./config/database');
+const { createUserTable } = require('./models/userModels');
+
 const app = express();
+const PORT = process.env.PORT || 5000;
+
 app.use(express.json());
 app.use(cors());
-const PORT = process.env.PORT || 5000;
-app.get('/',(req,res)=>{
-    res.send('OralVis Backend is running.');
-})
-//404 handler 
-app.use((req,res)=>{
-    res.status(404).json({message:'Route not found'});
-})
-//error handler to catch the errors.
-app.use((err,req,res,next)=>{
-    console.error(err);
-    res.status(500).json({message:err.message});
-})
-app.listen(PORT,()=>{
-    console.log(`server is running on http://localhost:${PORT}`);
-})
+
+// Initialize DB tables before server start
+createUserTable().catch(err => {
+  console.error('Failed to initialize database tables:', err);
+  process.exit(1);
+});
+
+// check root route
+app.get('/', (req, res) => {
+  res.send('OralVis Backend is running.');
+});
+
+// auth routes
+app.use('/api/auth', require('./routes/authRoutes'));
+
+// 404 handler (for unmatched routes)
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: err.message });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
