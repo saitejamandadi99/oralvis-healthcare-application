@@ -1,6 +1,4 @@
 const dbPromise = require('../config/database');
-const {createScansTable} = require('../models/scanModel');
-const {authenticateDentist} = require('../middleware/authMiddleware');
 
 const viewScansDentist = async (req , res) =>{
     try {
