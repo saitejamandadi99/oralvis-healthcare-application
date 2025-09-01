@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 
 // auth routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/scansview',require('./routes/viewScansRoute'));
 
 // 404 handler (for unmatched routes)
 app.use((req, res) => {
