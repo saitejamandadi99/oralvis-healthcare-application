@@ -1,0 +1,96 @@
+.register-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #555;
+}
+
+.register-form input,
+.register-form select {
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+
+.register-form button {
+  padding: 12px;
+  background-color: #0077ff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-form button:disabled {
+  background-color: #77aaff;
+  cursor: not-allowed;
+}
+
+.register-form button:hover:not(:disabled) {
+  background-color: #005fcc;
+}
+
+.error-message {
+  margin-top: 15px;
+  color: #d93025;
+  text-align: center;
+  font-weight: 600;
+}
+
+.success-message {
+  margin-top: 15px;
+  color: #188038;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .register-container {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  .register-form input,
+  .register-form select,
+  .register-form button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .register-container h2 {
+    font-size: 1.5rem;
+  }
+}
