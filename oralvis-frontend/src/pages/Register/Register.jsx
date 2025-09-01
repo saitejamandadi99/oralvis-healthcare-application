@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import "./register.css";
 
@@ -22,7 +23,6 @@ const Register = () => {
     try {
       setIsLoading(true);
       const response = await axios.post('http://localhost:5000/api/auth/register', formData);
-      console.log(response.data);
       alert('Registration successful! Please log in.');
       setFormData({
         username: '',
@@ -32,13 +32,10 @@ const Register = () => {
       });
       setSuccess('Registration successful! Please log in.');
       setError(null);
-    }
-    catch (err) {
-      console.error("Registration Error:", err);
+    } catch (err) {
       setError(err.response?.data?.message || 'Server Error');
       setSuccess(null);
-    }
-    finally {
+    } finally {
       setIsLoading(false);
     }
   }
@@ -96,10 +93,15 @@ const Register = () => {
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Registering...' : 'Register'}
         </button>
-      </form>
 
-      {error && <p className="error-message">{error}</p>}
-      {success && <p className="success-message">{success}</p>}
+        {/* Link to Login */}
+        <p className="form-switch">
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
+
+        {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>}
+      </form>
     </div>
   );
 }

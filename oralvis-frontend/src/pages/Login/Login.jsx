@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import cookie from 'js-cookie';
 import './Login.css';
@@ -24,9 +24,8 @@ const Login = () => {
     try {
       setIsLoading(true);
       const response = await axios.post('http://localhost:5000/api/auth/login', formData);
-      console.log(response.data);
       if (response.data.token) {
-        cookie.set('token', response.data.token, { expires: 1 }); // 1 day expiration
+        cookie.set('token', response.data.token, { expires: 1 });
         cookie.set('userDetails', JSON.stringify(response.data.userDetails), { expires: 1 });
         setSuccess('Login successful! Redirecting...');
         setError(null);
@@ -36,16 +35,13 @@ const Login = () => {
         } else if (response.data.userDetails.role === 'Dentist') {
           navigate('/dentist-dashboard');
         } else {
-          navigate('/'); // fallback
+          navigate('/');
         }
       }
-    }
-    catch (err) {
-      console.error("Login Error:", err);
+    } catch (err) {
       setError(err.response?.data?.message || 'Server Error');
       setSuccess(null);
-    }
-    finally {
+    } finally {
       setIsLoading(false);
     }
   }
@@ -79,10 +75,15 @@ const Login = () => {
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Logging in...' : 'Login'}
         </button>
-      </form>
 
-      {error && <p className="error-message">{error}</p>}
-      {success && <p className="success-message">{success}</p>}
+        {/* Link to Register */}
+        <p className="form-switch">
+          Don't have an account? <Link to="/register">Register here</Link>
+        </p>
+
+        {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>}
+      </form>
     </div>
   );
 };
