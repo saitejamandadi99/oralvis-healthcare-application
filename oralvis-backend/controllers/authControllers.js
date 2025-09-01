@@ -39,7 +39,7 @@ const loginUser = async (req,res) =>{
             if(!isPasswordValid){
                 return res.status(400).json({message:"Invalid password"});
             }
-            const token = jwt.sign({id:ifuserExists.id,email}, JWT_SECRET,{expiresIn:'2h'}) //token is used for authentication.
+            const token = jwt.sign({id:ifuserExists.id,email}, process.env.JWT_SECRET,{expiresIn:'2h'}) //token is used for authentication.
             res.status(200).json({message:'Login successfully',userDetails:ifuserExists, token});
     }
     catch(err){
