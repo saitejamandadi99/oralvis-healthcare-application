@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const { createUserTable } = require('./models/userModels');
-
+const {createScansTable} = require('./models/scanModel');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -11,6 +11,10 @@ app.use(cors());
 
 // Initialize DB tables before server start
 createUserTable().catch(err => {
+  console.error('Failed to initialize database tables:', err);
+  process.exit(1);
+});
+createScansTable().catch(err => {
   console.error('Failed to initialize database tables:', err);
   process.exit(1);
 });
