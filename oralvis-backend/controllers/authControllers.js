@@ -15,7 +15,7 @@ const registerUser = async (req ,res ) =>{
         }
         const hashedPassword = await bcrypt.hash(password,10);
         const newUserInsert = `Insert into userDetails (username, email, password,role) values(?,?,?,?)`;
-        const result = await db.run(newUserInsert,[username,email,hashedPassword]);
+        const result = await db.run(newUserInsert,[username,email,hashedPassword,role]);
         const UserId = result.lastID;
         res.status(201).json({message:'User registered successfully',userID:UserId}); //user should login to get token after registration.
 

@@ -7,7 +7,7 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    role: '',
+    role: 'Technician',
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
