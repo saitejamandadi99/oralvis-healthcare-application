@@ -7,17 +7,17 @@ const JWT_SECRET = process.env.SECRET
 //Register User 
 const registerUser = async (req ,res ) =>{
     try{
-        const {username, email, password} = req.body; 
+        const {username, email, password,role} = req.body; 
         const db = await dbPromise;
-        const ifuserExists = await db.get(`select * from users where email = ?`,[email]);
+        const ifuserExists = await db.get(`select * from userDetails where email = ?`,[email]);
         if(ifuserExists){
             return res.status(400).json({message:"User already exists"});
         }
         const hashedPassword = await bcrypt.hash(password,10);
-        const newUserInsert = `Insert into users (username, email, password) values(?,?,?)`;
+        const newUserInsert = `Insert into userDetails (username, email, password,role) values(?,?,?,?)`;
         const result = await db.run(newUserInsert,[username,email,hashedPassword]);
         const UserId = result.lastID;
-        res.status(201).json({message:'User registered successfully'}); //user should login to get token after registration.
+        res.status(201).json({message:'User registered successfully',userID:UserId}); //user should login to get token after registration.
 
 
     }catch(err){
@@ -31,7 +31,7 @@ const loginUser = async (req,res) =>{
     try{
             const {email,password} = req.body;
             const db = await dbPromise; 
-            const ifuserExists = await db.get(`select * from users where email = ?`, [email]);
+            const ifuserExists = await db.get(`select * from userDetails where email = ?`, [email]);
             if(!ifuserExists){
                 return res.status(400).json({message:"User with this email does not exist."});
             }
@@ -40,7 +40,7 @@ const loginUser = async (req,res) =>{
                 return res.status(400).json({message:"Invalid password"});
             }
             const token = jwt.sign({id:ifuserExists.id,email}, JWT_SECRET,{expiresIn:'2h'}) //token is used for authentication.
-            res.status(200).json({message:'Login successfully', token});
+            res.status(200).json({message:'Login successfully',userDetails:ifuserExists, token});
     }
     catch(err){
         console.error("Login Error:", err);
