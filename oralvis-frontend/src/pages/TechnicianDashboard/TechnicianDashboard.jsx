@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
-import "./TechnicianUpload.css";
+import "./TechnicianDashboard.css";
 
-const TechnicianUpload = () => {
+const TechnicianDashboard = () => {
   const [formData, setFormData] = useState({
     patientName: "",
     patientId: "",
@@ -122,4 +122,4 @@ const TechnicianUpload = () => {
   );
 };
 
-export default TechnicianUpload;
+export default TechnicianDashboard;

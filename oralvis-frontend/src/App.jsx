@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import Register from './pages/Register/register';
 import Login from './pages/Login/Login';
 import DentistScans from './pages/DentistScans/DentistScans';
+import TechnicianDashboard from './pages/TechnicianDashboard/TechnicianDashboard';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -11,9 +13,29 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dentist-dashboard" element={<DentistScans />} />
+
+        {/* Protected Dentist Dashboard */}
+        <Route
+          path="/dentist-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['Dentist']}>
+              <DentistScans />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Protected Technician Dashboard */}
+        <Route
+          path="/technician-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['Technician']}>
+              <TechnicianDashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
