@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('https://oralvis-healthcare-application.vercel.app/api/auth/login', formData);
       if (response.data.token) {
         cookie.set('token', response.data.token, { expires: 1 });
         cookie.set('userDetails', JSON.stringify(response.data.userDetails), { expires: 1 });

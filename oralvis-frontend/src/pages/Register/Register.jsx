@@ -22,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post('https://oralvis-healthcare-application.vercel.app/api/auth/register', formData);
       alert('Registration successful! Please log in.');
       setFormData({
         username: '',

@@ -1,20 +1,9 @@
-const sqlite3 = require('sqlite3').verbose();
-const { open } = require('sqlite');
-const path = require('path');
+// database.js
+const { createClient } = require("@libsql/client");
 
-const dbPath = path.resolve(__dirname, 'oralvis.db');
+const db = createClient({
+  url: process.env.TURSO_DATABASE_URL,     
+  authToken: process.env.TURSO_AUTH_TOKEN, 
+});
 
-const dbPromise = open({
-  filename: dbPath,
-  driver: sqlite3.Database
-})
-  .then((db) => {
-    console.log('Connected to the SQLite database.');
-    return db;
-  })
-  .catch((err) => {
-    console.error('DB Connection Error:', err.message);
-    process.exit(1);
-  });
-
-module.exports = dbPromise;
+module.exports = db;

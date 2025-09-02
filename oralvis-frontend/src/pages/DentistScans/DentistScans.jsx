@@ -23,7 +23,7 @@ const DentistScans = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/scansview/viewScans', {
+        const response = await axios.get('https://oralvis-healthcare-application.vercel.app/api/scansview/viewScans', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setScans(response.data.scans);

@@ -40,7 +40,7 @@ const TechnicianDashboard = () => {
       data.append("image", file);
 
       const response = await axios.post(
-        "http://localhost:5000/api/technician/upload",
+        "https://oralvis-healthcare-application.vercel.app/api/technician/upload",
         data,
         {
           headers: {
