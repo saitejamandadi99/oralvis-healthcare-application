@@ -56,7 +56,7 @@ Frontend: https://oralvis-healthcare-application-ucrs.vercel.app/
 
 Backend: https://oralvis-healthcare-application-oy8rx35i4.vercel.app/
 
-(Replace above with your deployed URLs)
+
 
 🏗️ Tech Stack
 Layer	Technology
