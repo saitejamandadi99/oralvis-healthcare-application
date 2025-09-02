@@ -31,6 +31,7 @@ const loginUser = async (req,res) =>{
             const {email,password} = req.body;
             const db = await dbPromise; 
             const ifuserExists = await db.get(`select * from userDetails where email = ?`, [email]);
+            
             if(!ifuserExists){
                 return res.status(400).json({message:"User with this email does not exist."});
             }
@@ -38,6 +39,7 @@ const loginUser = async (req,res) =>{
             if(!isPasswordValid){
                 return res.status(400).json({message:"Invalid password"});
             }
+            const role = ifuserExists.role;
             const token = jwt.sign({id:ifuserExists.id,email,role}, process.env.JWT_SECRET,{expiresIn:'2h'}) //token is used for authentication.
             res.status(200).json({message:'Login successfully',userDetails:ifuserExists, token});
     }
