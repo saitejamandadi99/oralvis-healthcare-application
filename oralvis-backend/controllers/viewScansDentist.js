@@ -1,16 +1,15 @@
-const dbPromise = require('../config/database');
+const db = require('../config/database');
 
-const viewScansDentist = async (req , res) =>{
-    try {
+const viewScansDentist = async (req, res) => {
+  try {
+    const result = await db.execute({ sql: "SELECT * FROM scans" });
+    const scans = result.rows;
 
-        const db = await dbPromise;
-        const scans = await db.all(`select * from scans`);
-        res.status(200).json({scans});
-        
-    } catch (error) {
-       console.error("Error fetching scans:", error);
-       res.status(500).json({message: "Internal Server Error"}); 
-    }
-}
+    res.status(200).json({ scans });
+  } catch (error) {
+    console.error("Error fetching scans:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
 module.exports = viewScansDentist;
