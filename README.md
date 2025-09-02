@@ -127,14 +127,6 @@ VITE_BACKEND_URL=http://localhost:YOUR_BACKEND_PORT
 text
 
 ---
-
-## 👤 Default Credentials
-
-| Role        | Email             | Password  |
-| ----------- | ----------------- | --------- |
-| Technician  | [ADD HERE]        | [ADD HERE]|
-| Dentist     | [ADD HERE]        | [ADD HERE]|
-
 ---
 
 ## 📸 Screenshots
