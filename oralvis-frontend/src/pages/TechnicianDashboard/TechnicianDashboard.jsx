@@ -84,7 +84,7 @@ const TechnicianDashboard = () => {
 
         <label>Patient ID</label>
         <input
-          name="patientId"
+          name="patientIdNumber"
           value={formData.patientId}
           onChange={handleChange}
           required
