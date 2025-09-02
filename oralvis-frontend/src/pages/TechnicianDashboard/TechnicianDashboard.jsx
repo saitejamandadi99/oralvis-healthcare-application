@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import cookie from "js-cookie";
 import "./TechnicianDashboard.css";
@@ -13,6 +13,9 @@ const TechnicianDashboard = () => {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
+
+  // Ref for file input to reset its value after submission of form.
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -54,6 +57,10 @@ const TechnicianDashboard = () => {
         region: "",
       });
       setFile(null);
+      // Reseting teh file input value here
+      if (fileInputRef.current) {
+        fileInputRef.current.value = null;
+      }
     } catch (err) {
       setMessage(
         err.response?.data?.message || "Upload failed or not authorized."
@@ -110,7 +117,13 @@ const TechnicianDashboard = () => {
         </select>
 
         <label>Scan Image</label>
-        <input type="file" accept="image/*" onChange={handleFileChange} required />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          required
+          ref={fileInputRef} // add ref here
+        />
 
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Uploading..." : "Upload"}
