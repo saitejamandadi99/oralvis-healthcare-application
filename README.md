@@ -2,6 +2,7 @@ OralVis Healthcare
 A full-stack web application for managing dental scans with role-based access for Technicians (upload) and Dentists (view/download), using React, Node.js/Express, SQLite (Turso Cloud), and Cloudinary for images.
 
 ✨ Features
+
 Role-based Login: Technician and Dentist, JWT-secured sessions.
 
 Technician Dashboard: Upload patient scan + details, image sent to Cloudinary.
