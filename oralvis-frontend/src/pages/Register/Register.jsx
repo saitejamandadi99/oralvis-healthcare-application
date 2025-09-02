@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import "./register.css";
+import "./Register.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({

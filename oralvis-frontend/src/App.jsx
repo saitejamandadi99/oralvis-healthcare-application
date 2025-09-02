@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
-import Register from './pages/Register/register';
+import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import DentistScans from './pages/DentistScans/DentistScans';
 import TechnicianDashboard from './pages/TechnicianDashboard/TechnicianDashboard';
