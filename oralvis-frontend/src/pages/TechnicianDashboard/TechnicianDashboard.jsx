@@ -91,7 +91,7 @@ const TechnicianDashboard = () => {
           required
         >
           <option value="">Select Scan Type</option>
-          <option value="MRI">MRI</option>
+          <option value="RGB">RGB</option>
           <option value="CT">CT</option>
           <option value="X-Ray">X-Ray</option>
         </select>
@@ -104,9 +104,9 @@ const TechnicianDashboard = () => {
           required
         >
           <option value="">Select Region</option>
-          <option value="Head">Head</option>
-          <option value="Neck">Neck</option>
-          <option value="Teeth">Teeth</option>
+          <option value="Frontal">Frontal</option>
+          <option value="Upper Arch"> Upper Arch</option>
+          <option value="Lower Arch">Lower Arch</option>
         </select>
 
         <label>Scan Image</label>
