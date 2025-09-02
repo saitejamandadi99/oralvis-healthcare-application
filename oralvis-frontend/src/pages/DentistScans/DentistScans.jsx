@@ -66,7 +66,7 @@ const DentistScans = () => {
               <p><strong>Patient ID:</strong> {scan.patientId}</p>
               <p><strong>Scan Type:</strong> {scan.scanType}</p>
               <p><strong>Region:</strong> {scan.region}</p>
-              <p><strong>Uploaded on:</strong> {new Date(scan.uploadDate).toLocaleString()}</p>
+              <p><strong>Uploaded on:</strong> {new Date(scan.uploadDate).toLocaleDateString()}</p>
             </div>
           </div>
         ))}
