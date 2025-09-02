@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './pages/Header/Header';
+import Header from './components/Header/Header';
 import Register from './pages/Register/register';
 import Login from './pages/Login/Login';
 import DentistScans from './pages/DentistScans/DentistScans';
