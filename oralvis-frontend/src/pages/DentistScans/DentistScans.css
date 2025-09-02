@@ -84,3 +84,29 @@
     height: 120px;
   }
 }
+.scan-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 10px 20px 20px 20px;
+}
+
+/* Buttons already have Bootstrap's btn and btn-primary colors */
+
+@media (max-width: 768px) {
+  .scan-actions button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scan-actions {
+    flex-direction: column;
+  }
+  .scan-actions button {
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+}
