@@ -1,0 +1,79 @@
+.tech-upload-container {
+  max-width: 390px;
+  margin: 40px auto;
+  padding: 24px 16px;
+  background: #f9fbfd;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #225;
+}
+
+.tech-upload-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.tech-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tech-upload-form label {
+  font-weight: 600;
+  color: #0077ff;
+  margin-bottom: 2px;
+}
+
+.tech-upload-form input,
+.tech-upload-form select {
+  padding: 9px 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.tech-upload-form button {
+  padding: 10px 0;
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.tech-upload-form button:disabled {
+  background: #a5d1ff;
+  cursor: not-allowed;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background: #f3f6fe;
+  color: #188038;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid #c2dbfe;
+  font-size: 0.98rem;
+}
+
+/* Responsive styles */
+@media (max-width: 500px) {
+  .tech-upload-container {
+    width: 94vw;
+    padding: 15px 3vw;
+    font-size: 0.95rem;
+  }
+  .tech-upload-form input,
+  .tech-upload-form select {
+    font-size: 0.95rem;
+    padding: 8px 6px;
+  }
+}
