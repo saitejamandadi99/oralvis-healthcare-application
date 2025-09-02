@@ -20,6 +20,8 @@ Security: Passwords hashed, images never stored in DB, CORS, environment secrets
 🗂 Folder Structure
 <details> <summary><b>Expand for tree</b></summary>
 bash
+
+ ```
 oralvis-backend
 ├── config/
 ├── controllers/
@@ -47,6 +49,7 @@ oralvis-frontend
 ├── README.md
 ├── vercel.json
 ├── vite.config.js
+```
 </details> [2]
 🔗 Live Demo
 Frontend: https://oralvis-healthcare-application-ucrs.vercel.app/
